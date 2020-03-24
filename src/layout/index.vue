@@ -120,7 +120,7 @@ export default {
   .tg{
     padding: 5px;
     text-align: left;
-    background-color: $color-blue;
+    background-color: #2f89ef;
     color: #ffffff;
     cursor: pointer;
   }
@@ -151,7 +151,7 @@ export default {
     position: relative;
     display: block;
     padding: 0.5em 1em;
-    color:$color-list-selected;
+    color: #37485d;
     text-align: left;
     border-bottom: 1px dotted #ccc;
     .t{
@@ -170,7 +170,7 @@ export default {
     }
 
     &:hover{
-      background-color: $color-list-selected;
+      background-color:  #37485d;
       color: #fff;
     }
   }
