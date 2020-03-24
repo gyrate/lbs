@@ -1,0 +1,25 @@
+stages:
+    - prepare
+    - build
+    - deploy
+    
+prepare:
+    stage: prepare
+    script:
+        - sh /data/deploy/iot/lbs-frontend/local/js/cicdscript/pullcode.sh $CI_COMMIT_SHA
+    tags:
+        - master
+
+build:
+    stage: build 
+    script: 
+        - sh /data/deploy/iot/lbs-frontend/local/js/cicdscript/build.sh $CI_COMMIT_SHA
+    tags:
+        - master
+        
+deploy:
+    stage: deploy
+    tags: 
+        - master
+    script:
+        - ssh root@192.168.1.150 "sh /data/deploy/lbs-frontend/cicdscript/deploy.sh $CI_COMMIT_SHA /data/deploy/lbs-frontend/cicdscript/nginx.conf"
