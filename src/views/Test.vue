@@ -1,25 +1,13 @@
 <template>
   <div class="cm">
-    <!--<div class="editor">-->
-      <!--<div class="toolbar">-->
-        <!--<a @click="runCode">运行代码</a>-->
-      <!--</div>-->
-      <!--<codemirror-->
-        <!--v-model="code"-->
-        <!--:options="cmOptions"-->
-      <!--/>-->
-    <!--</div>-->
-    <!--<div-->
-      <!--ref="preview"-->
-      <!--class="preview"-->
-    <!--/>-->
     <iframe
-    src="https://codesandbox.io/embed/vigilant-leaf-cx058?autoresize=1&codemirror=1&fontsize=14&hidenavigation=1&theme=light"
-    style="position:absolute; width:100%; height:100%; border:0; border-radius: 4px; overflow:hidden;"
-    title="vigilant-leaf-cx058"
-    allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-    sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+      src="https://codesandbox.io/embed/vigilant-leaf-cx058?autoresize=1&codemirror=1&fontsize=14&hidenavigation=1&module=%2Fsrc%2FApp.vue&theme=light"
+      style="width:100%; height:100%; border:0; border-radius: 4px; overflow:hidden;"
+      title="vigilant-leaf-cx058"
+      allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+      sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
     ></iframe>
+
   </div>
 </template>
 

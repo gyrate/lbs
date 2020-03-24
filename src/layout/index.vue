@@ -5,6 +5,9 @@
         <div class="tg" title="显示|隐藏" @click="toggleNav">
           <span><i class="el-icon-s-fold"/></span>
         </div>
+        <!--<div>-->
+          <!--<button @click="getCode">获取源码</button>-->
+        <!--</div>-->
         <div v-show="isNavVisible">
           <div
             v-for="(item,idx) in list"
@@ -48,6 +51,12 @@
         </div>
       </nav>
     </div>
+    <!--<div class="mid">-->
+      <!--<codemirror-->
+        <!--ref="cmEditor"-->
+        <!--:value="codeValue"-->
+      <!--/>-->
+    <!--</div>-->
     <div class="main">
       <router-view />
     </div>
@@ -55,13 +64,15 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'App',
   data () {
     return {
       isNavVisible: true,
       curGroupId: 1,
-      curGroupOpen: true
+      curGroupOpen: true,
+      // codeValue: 'const a = 10'
     }
   },
   computed: {
@@ -87,6 +98,22 @@ export default {
     // 显示隐藏导航
     toggleNav () {
       this.isNavVisible = !this.isNavVisible
+    },
+    // 获取当前页面的源代码并展示出来
+    getCode() {
+
+      // 方法一：调用codeSandbox
+      // 方法二: 自动打包时将views文件拷贝到public中，关联当前路径到views对应的文件，读取文件内容并展示出来
+      console.log(this.$route)
+      axios({
+        method: 'get',
+        url: './static/IconLayerViaField2.vue',
+        headers: { 'content-type': 'text/html' },
+      }).then(res => {
+        // debugger
+        this.codeValue = res.data
+      })
+
     }
   }
 }
@@ -95,12 +122,26 @@ export default {
 <style lang="scss" rel="stylesheet/scss">
 .wrap{
   display: flex;
-  min-height: 100%;
+  height: 100%;
   flex-direction: row;
   .side{
     position: relative;
     width: 260px;
     border-right: 1px solid #ccc;
+  }
+  .mid{
+    position: relative;
+    width:400px;
+    border-right: 1px solid #ccc;
+    text-align: left;
+
+    .vue-codemirror{
+      height: 100%;
+      overflow: auto;
+    }
+    .CodeMirror {
+      height: auto;
+    }
   }
   .main{
     position: relative;
